@@ -22,22 +22,10 @@ class CryptosHelper {
     return cryptos;
   }
 
-  Future<Coin> getCryptoDetailsHelper(int coinId) async {
+  Future<Coin?> getCryptoDetailsHelper(int coinId) async {
     final res = await api.getCryptoDetails(coinId);
     if (res == errorMessage) {
-      return Coin(
-        id: 0,
-        uuid: "",
-        slug: "",
-        symbol: "",
-        name: "",
-        description: "",
-        rank: 0,
-        iconUrl: "",
-        price: "",
-        marketCap: 0,
-        change: 0,
-      );
+      return null;
     }
 
     final data = json.decode(res);
@@ -46,10 +34,10 @@ class CryptosHelper {
     return coin;
   }
 
-  Future<CoinHistory> getCryptoHistory(int coinId, String timePeriod) async {
+  Future<CoinHistory?> getCryptoHistory(int coinId, String timePeriod) async {
     final res = await api.getCryptoHistory(coinId, timePeriod);
     if (res == errorMessage) {
-      return CoinHistory(change: 0, history: []);
+      return null;
     }
 
     final data = json.decode(res);
