@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cryptohub/models/core/crypto_info.dart';
+
 import '../services/crypto_api.dart';
 import '../core/coin.dart';
 import '../core/graph_data.dart';
@@ -22,19 +24,22 @@ class CryptosHelper {
     return cryptos;
   }
 
-  Future<Coin?> getCryptoDetailsHelper(int coinId) async {
+  Future<CryptoInfo?> getCryptoDetailsHelper(int coinId) async {
     final res = await api.getCryptoDetails(coinId);
     if (res == errorMessage) {
       return null;
     }
 
     final data = json.decode(res);
-    final Coin coin = data['data']['coin'];
+    final CryptoInfo coin = data['data']['coin'];
 
     return coin;
   }
 
-  Future<CoinHistory?> getCryptoHistory(int coinId, String timePeriod) async {
+  Future<CoinHistory?> getCryptoHistoryHelper(
+    int coinId,
+    String timePeriod,
+  ) async {
     final res = await api.getCryptoHistory(coinId, timePeriod);
     if (res == errorMessage) {
       return null;
