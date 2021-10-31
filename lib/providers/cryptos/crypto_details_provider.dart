@@ -4,16 +4,13 @@ import '../../models/helpers/cryptos_helper.dart';
 import '../../models/core/crypto_info.dart';
 
 class CryptoDetailsProvider extends ChangeNotifier {
-  final int coinId;
   final helper = CryptosHelper();
-
-  CryptoDetailsProvider({required this.coinId});
 
   CryptoInfo? _cryptoInfo;
 
   CryptoInfo? get cryptoInfo => _cryptoInfo;
 
-  Future<void> setCryptoInfo() async {
+  Future<void> setCryptoInfo(int coinId) async {
     final cryptoInfo = await helper.getCryptoDetailsHelper(coinId);
     if (cryptoInfo == null) {
       _cryptoInfo = null;
