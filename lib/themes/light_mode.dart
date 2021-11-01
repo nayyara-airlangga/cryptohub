@@ -18,7 +18,7 @@ ThemeData lightTheme = ThemeData(
     titleTextStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
   ),
   backgroundColor: Colors.white.withOpacity(1),
-  scaffoldBackgroundColor: Colors.white.withOpacity(1),
+  scaffoldBackgroundColor: const Color.fromRGBO(249, 249, 249, 1),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: const Color.fromRGBO(0, 21, 41, 1),
     selectedItemColor: Colors.blue.withOpacity(1),
