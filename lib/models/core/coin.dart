@@ -43,7 +43,7 @@ class Coin {
     };
   }
 
-  static Coin? fromMap(Map<String, dynamic> map) {
+  static Coin? fromMap(Map<String, dynamic>? map) {
     if (map == null) return null;
 
     return Coin(
