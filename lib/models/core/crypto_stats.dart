@@ -20,4 +20,20 @@ class CryptoStats {
     required this.totalMarketCap,
     required this.total24hVolume,
   });
+
+  static CryptoStats? fromMap(Map<String, dynamic>? map) {
+    if (map == null) return null;
+
+    return CryptoStats(
+      total: map['total'],
+      offset: map['offset'],
+      base: map['base'],
+      limit: map['limit'],
+      order: map['order'],
+      totalMarkets: map['totalMarkets'],
+      totalExchanges: map['totalExchanges'],
+      totalMarketCap: map['totalMarketCap'],
+      total24hVolume: map['total24hVolume'],
+    );
+  }
 }

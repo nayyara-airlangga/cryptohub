@@ -1,27 +1,45 @@
 import 'dart:convert';
 
-import 'package:cryptohub/models/core/crypto_info.dart';
-
 import '../services/crypto_api.dart';
 import '../core/coin.dart';
 import '../core/graph_data.dart';
 import '../core/exchanges.dart';
+import '../core/crypto_info.dart';
+import '../core/crypto_stats.dart';
 
 class CryptosHelper {
   final api = CryptoApi();
   static const errorMessage = "An Error Occured";
 
-  Future<List<Coin>> getCryptosHelper(int? limit) async {
+  Future<List<Coin?>> getCryptosHelper(int? limit) async {
     final res = await api.getCryptos(limit);
 
     if (res == errorMessage) {
       return [];
     }
 
-    final data = json.decode(res);
-    final List<Coin> cryptos = data['data']['coins'];
+    final data = json.decode(res) as Map<String, dynamic>;
+
+    final List<Coin?> cryptos = [];
+
+    for (Map<String, dynamic> coin in data['data']['coins']) {
+      cryptos.add(Coin.fromMap(coin));
+    }
 
     return cryptos;
+  }
+
+  Future<CryptoStats?> getCryptoStatsHelper(int? limit) async {
+    final res = await api.getCryptos(limit);
+
+    if (res == errorMessage) {
+      return null;
+    }
+
+    final data = json.decode(res) as Map<String, dynamic>;
+    final CryptoStats cryptoStats = CryptoStats.fromMap(data['data']['stats'])!;
+
+    return cryptoStats;
   }
 
   Future<CryptoInfo?> getCryptoDetailsHelper(int coinId) async {

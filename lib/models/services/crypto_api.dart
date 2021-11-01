@@ -12,7 +12,7 @@ const baseUrl = "coinranking1.p.rapidapi.com";
 
 class CryptoApi {
   Future<String> getCryptos(int? limit) async {
-    final url = Uri.https(baseUrl, "/coins?limit=$limit");
+    final url = Uri.https(baseUrl, "/coins", {"limit": "$limit"});
     final res = await http.get(url, headers: apiHeaders);
 
     if (res.statusCode != 200) {
