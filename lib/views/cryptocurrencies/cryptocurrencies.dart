@@ -98,10 +98,19 @@ class _CryptocurrenciesScreenState extends State<CryptocurrenciesScreen> {
             textAlignVertical: TextAlignVertical.bottom,
             controller: _filterSearch,
             decoration: const InputDecoration(
-              border: OutlineInputBorder(
-                borderSide: BorderSide(),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.grey,
+                  width: 0.4,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.blue,
+                ),
               ),
               hintText: "Search Cryptocurrency",
+              hintStyle: TextStyle(color: Colors.grey),
             ),
           ),
         ),

@@ -16,7 +16,13 @@ class NewsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 20),
-      decoration: const BoxDecoration(color: Colors.white),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          color: Colors.grey,
+          width: 0.2,
+        ),
+      ),
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 20,
