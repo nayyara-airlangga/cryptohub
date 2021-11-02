@@ -58,20 +58,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return CustomScaffold(
       index: 0,
-      body: Container(
-        margin: const EdgeInsets.symmetric(vertical: 20),
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: RefreshIndicator(
-          onRefresh: () async {
-            _cryptoStatsFuture = null;
-            _coinsFuture = null;
-            _cryptoNewsListFuture = null;
-            _cryptoStatsFuture = _setCryptoStatsFuture();
-            _coinsFuture = _setCoinsFuture();
-            _cryptoNewsListFuture = _setCryptoNewsListFuture();
-            return _coinsFuture as Future;
-          },
-          child: SingleChildScrollView(
+      body: RefreshIndicator(
+        onRefresh: () async {
+          _cryptoStatsFuture = null;
+          _coinsFuture = null;
+          _cryptoNewsListFuture = null;
+          _cryptoStatsFuture = _setCryptoStatsFuture();
+          _coinsFuture = _setCoinsFuture();
+          _cryptoNewsListFuture = _setCryptoNewsListFuture();
+          return _coinsFuture as Future;
+        },
+        child: SingleChildScrollView(
+          child: Container(
+            margin: const EdgeInsets.symmetric(vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
