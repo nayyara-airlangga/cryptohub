@@ -13,8 +13,17 @@ const baseUrl = "bing-news-search1.p.rapidapi.com";
 
 class CryptoNewsApi {
   Future<String> getCryptoNews(String newsCategory, int count) async {
-    final url = Uri.https(baseUrl,
-        "/news/search?q=$newsCategory&safeSearch=Off&textFormat=Raw&freshness=Day&count=$count");
+    final url = Uri.https(
+      baseUrl,
+      "/news/search",
+      {
+        'q': newsCategory,
+        'safeSearch': 'Off',
+        'textFormat': 'Raw',
+        'freshness': 'Day',
+        'count': '$count',
+      },
+    );
     final res = await http.get(url, headers: apiHeaders);
 
     if (res.statusCode != 200) {

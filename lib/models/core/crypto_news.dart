@@ -1,10 +1,12 @@
+import 'dart:collection';
+
 class CryptoNews {
   String name;
   String description;
   String url;
   String datePublished;
-  List<CryptoNewsCompany> provider;
-  Map<String, Map<String, String>> image;
+  List<dynamic> provider;
+  LinkedHashMap<String, dynamic> image;
 
   CryptoNews({
     required this.name,
@@ -14,14 +16,17 @@ class CryptoNews {
     required this.provider,
     required this.image,
   });
-}
 
-class CryptoNewsCompany {
-  String name;
-  Map<String, Map<String, String>> image;
+  static CryptoNews? fromMap(Map<String, dynamic>? map) {
+    if (map == null) return null;
 
-  CryptoNewsCompany({
-    required this.name,
-    required this.image,
-  });
+    return CryptoNews(
+      name: map['name'],
+      description: map['description'],
+      url: map['url'],
+      datePublished: map['datePublished'],
+      provider: map['provider'],
+      image: map['image'],
+    );
+  }
 }
