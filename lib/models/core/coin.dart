@@ -6,7 +6,7 @@ class Coin {
   String slug;
   String symbol;
   String name;
-  String description;
+  String? description;
   int rank;
   String iconUrl;
   String price;
@@ -39,7 +39,7 @@ class Coin {
       'iconUrl': iconUrl,
       'price': price,
       'marketCap': marketCap,
-      'change': change,
+      'change': double.parse(change.toString()),
     };
   }
 
@@ -57,7 +57,7 @@ class Coin {
       iconUrl: map['iconUrl'],
       price: map['price'],
       marketCap: map['marketCap'],
-      change: map['change'],
+      change: double.parse(map['change'].toString()),
     );
   }
 
