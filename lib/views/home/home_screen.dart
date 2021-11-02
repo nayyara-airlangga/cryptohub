@@ -5,6 +5,7 @@ import '../shared/custom_scaffold.dart';
 import 'widgets/crypto_stats_left_col.dart';
 import 'widgets/crypto_stats_right_col.dart';
 import 'widgets/coin_card.dart';
+import 'widgets/news_card.dart';
 import '../../providers/cryptos/coins_provider.dart';
 import '../../providers/crypto_news/crypto_news_provider.dart';
 
@@ -56,8 +57,10 @@ class _HomeScreenState extends State<HomeScreen> {
     final theme = Theme.of(context);
 
     return CustomScaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+      index: 0,
+      body: Container(
+        margin: const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: RefreshIndicator(
           onRefresh: () async {
             _cryptoStatsFuture = null;
@@ -153,10 +156,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             for (int index = 0;
                                 index < cryptoNewsList.length;
                                 index++)
-                              Text(
-                                cryptoNewsList[index]!.name,
-                                style: theme.textTheme.headline1
-                                    ?.copyWith(color: Colors.black),
+                              NewsCard(
+                                cryptoNews: cryptoNewsList[index]!,
+                                theme: theme,
                               ),
                           ],
                         ),
