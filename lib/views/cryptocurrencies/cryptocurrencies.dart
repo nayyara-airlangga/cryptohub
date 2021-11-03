@@ -59,24 +59,29 @@ class _CryptocurrenciesScreenState extends State<CryptocurrenciesScreen> {
                   ),
                 );
               }
-              return SingleChildScrollView(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Column(
-                    children: [
-                      _buildSearchBar(),
-                      const SizedBox(height: 40),
-                      for (int index = 0; index < filteredCoins.length; index++)
-                        CoinCard(
-                          key: ValueKey(double.parse(
-                              filteredCoins[index]!.rank.toString())),
-                          coin: filteredCoins[index],
-                          theme: theme,
+              return ListView.builder(
+                itemBuilder: (context, index) {
+                  if (index == 0) {
+                    return Container(
+                      child: _buildSearchBar(),
+                      margin: const EdgeInsets.symmetric(vertical: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                    );
+                  }
+                  return Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: CoinCard(
+                      key: ValueKey(
+                        double.parse(
+                          filteredCoins[index - 1]!.rank.toString(),
                         ),
-                    ],
-                  ),
-                ),
+                      ),
+                      coin: filteredCoins[index - 1],
+                      theme: theme,
+                    ),
+                  );
+                },
+                itemCount: filteredCoins.length + 1,
               );
             }),
       ),
