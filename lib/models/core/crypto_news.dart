@@ -6,7 +6,7 @@ class CryptoNews {
   String url;
   String datePublished;
   List<dynamic> provider;
-  LinkedHashMap<String, dynamic> image;
+  LinkedHashMap<String, dynamic>? image;
 
   CryptoNews({
     required this.name,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import '../../../models/core/crypto_news.dart';
+import '../../models/core/crypto_news.dart';
+
+const placeholderImageUrl =
+    "https://cpng.pikpng.com/pngl/s/550-5506683_rethinking-icon-news-placeholder-clipart.png";
 
 class NewsCard extends StatelessWidget {
   const NewsCard({
@@ -42,7 +45,10 @@ class NewsCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Image.network(
-                  cryptoNews.image['thumbnail']['contentUrl'],
+                  cryptoNews.image == null
+                      ? placeholderImageUrl
+                      : cryptoNews.image?['thumbnail']['contentUrl'],
+                  width: 100,
                 ),
               ),
             ],
@@ -60,27 +66,27 @@ class NewsCard extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.network(
-                cryptoNews.provider[0]['image']['thumbnail']['contentUrl'],
+                cryptoNews.provider[0]['image'] == null
+                    ? placeholderImageUrl
+                    : cryptoNews.provider[0]['image']['thumbnail']
+                        ['contentUrl'],
                 height: 40,
                 width: 40,
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 15),
               Flexible(
                 child: Text(cryptoNews.provider[0]['name']),
-                fit: FlexFit.loose,
+                fit: FlexFit.tight,
               ),
               const Spacer(),
-              Flexible(
-                child: Text(
-                  timeago.format(
-                    DateTime.parse(cryptoNews.datePublished),
-                  ),
-                  style: theme.textTheme.bodyText2,
+              Text(
+                timeago.format(
+                  DateTime.parse(cryptoNews.datePublished),
                 ),
-                fit: FlexFit.loose,
+                overflow: TextOverflow.visible,
+                style: theme.textTheme.bodyText2,
               ),
             ],
           ),

@@ -5,7 +5,7 @@ import '../shared/custom_scaffold.dart';
 import 'widgets/crypto_stats_left_col.dart';
 import 'widgets/crypto_stats_right_col.dart';
 import '../shared/coin_card.dart';
-import 'widgets/news_card.dart';
+import '../shared/news_card.dart';
 import '../../providers/cryptos/coins_provider.dart';
 import '../../providers/crypto_news/crypto_news_provider.dart';
 
@@ -158,6 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 index < cryptoNewsList.length;
                                 index++)
                               NewsCard(
+                                key: ValueKey(cryptoNewsList[index]!.name),
                                 cryptoNews: cryptoNewsList[index]!,
                                 theme: theme,
                               ),

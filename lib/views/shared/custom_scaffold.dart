@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../home/home_screen.dart';
 import '../cryptocurrencies/cryptocurrencies.dart';
+import '../exchanges/exchanges.dart';
+import '../news/news.dart';
 
 class CustomScaffold extends StatefulWidget {
   final Widget body;
@@ -32,6 +34,10 @@ class _CustomScaffoldState extends State<CustomScaffold> {
           } else if (_currentIndex == 1) {
             Navigator.pushReplacementNamed(
                 context, CryptocurrenciesScreen.routeName);
+          } else if (_currentIndex == 2) {
+            Navigator.pushReplacementNamed(context, ExchangesScreen.routeName);
+          } else {
+            Navigator.pushReplacementNamed(context, NewsScreen.routeName);
           }
         },
         items: const [

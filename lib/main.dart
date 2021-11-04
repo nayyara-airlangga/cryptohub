@@ -4,9 +4,12 @@ import 'package:provider/provider.dart';
 
 import 'views/home/home_screen.dart';
 import 'views/cryptocurrencies/cryptocurrencies.dart';
+import 'views/exchanges/exchanges.dart';
+import 'views/news/news.dart';
 import 'themes/light_mode.dart';
 import 'providers/crypto_news/crypto_news_provider.dart';
 import 'providers/cryptos/coins_provider.dart';
+import 'providers/cryptos/exchanges_provider.dart';
 
 Future<void> main() async {
   await dotenv.load();
@@ -26,6 +29,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => CryptoNewsProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => ExchangesProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -36,6 +42,8 @@ class MyApp extends StatelessWidget {
           HomeScreen.routeName: (context) => const HomeScreen(),
           CryptocurrenciesScreen.routeName: (context) =>
               const CryptocurrenciesScreen(),
+          ExchangesScreen.routeName: (context) => const ExchangesScreen(),
+          NewsScreen.routeName: (context) => const NewsScreen(),
         },
       ),
     );
