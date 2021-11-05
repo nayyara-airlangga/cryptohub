@@ -6,9 +6,9 @@ import '../../models/core/exchanges.dart';
 class ExchangesProvider with ChangeNotifier {
   final helper = CryptosHelper();
 
-  List<Exchanges> _exchanges = [];
+  List<Exchanges?> _exchanges = [];
 
-  List<Exchanges> get exchanges => [..._exchanges];
+  List<Exchanges?> get exchanges => [..._exchanges];
 
   Future<void> setExchanges() async {
     final exchanges = await helper.getExchangesHelper();
