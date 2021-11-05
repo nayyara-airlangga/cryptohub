@@ -30,6 +30,7 @@ class Exchanges {
       volume: map['volume'],
       numberOfMarkets: map['numberOfMarkets'],
       marketShare: map['marketShare'],
+      description: map['description'],
     );
   }
 }
