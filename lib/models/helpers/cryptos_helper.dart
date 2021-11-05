@@ -37,7 +37,8 @@ class CryptosHelper {
     }
 
     final data = json.decode(res) as Map<String, dynamic>;
-    final CryptoStats cryptoStats = CryptoStats.fromMap(data['data']['stats'])!;
+
+    final CryptoStats? cryptoStats = CryptoStats.fromMap(data['data']['stats']);
 
     return cryptoStats;
   }
@@ -69,15 +70,20 @@ class CryptosHelper {
     return coinHistory;
   }
 
-  Future<List<Exchanges>> getExchangesHelper() async {
+  Future<List<Exchanges?>> getExchangesHelper() async {
     final res = await api.getExchanges();
     if (res == errorMessage) {
       return [];
     }
 
-    final data = json.decode(res);
-    final List<Exchanges> exchanges = data['data']['exchanges'];
+    final data = json.decode(res) as Map<String, dynamic>;
 
-    return exchanges;
+    final List<Exchanges?> exchangesList = [];
+
+    for (Map<String, dynamic> exchanges in data['data']['exchanges']) {
+      exchangesList.add(Exchanges.fromMap(exchanges));
+    }
+
+    return exchangesList;
   }
 }

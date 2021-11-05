@@ -30,17 +30,7 @@ class CoinsProvider with ChangeNotifier {
       _cryptoStats = null;
       notifyListeners();
     } else {
-      _cryptoStats = CryptoStats(
-        total: cryptoStats.total,
-        offset: cryptoStats.offset,
-        limit: cryptoStats.limit,
-        order: cryptoStats.order,
-        base: cryptoStats.base,
-        totalMarkets: cryptoStats.totalMarkets,
-        totalExchanges: cryptoStats.totalExchanges,
-        totalMarketCap: cryptoStats.totalMarketCap,
-        total24hVolume: cryptoStats.total24hVolume,
-      );
+      _cryptoStats = cryptoStats;
       notifyListeners();
     }
   }

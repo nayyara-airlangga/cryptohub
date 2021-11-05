@@ -7,7 +7,7 @@ class CryptoStats {
   int totalMarkets;
   int totalExchanges;
   double totalMarketCap;
-  double total24hVolume;
+  int total24hVolume;
 
   CryptoStats({
     required this.total,
@@ -33,7 +33,7 @@ class CryptoStats {
       totalMarkets: map['totalMarkets'],
       totalExchanges: map['totalExchanges'],
       totalMarketCap: map['totalMarketCap'],
-      total24hVolume: map['total24hVolume'],
+      total24hVolume: map['total24hVolume'].toInt(),
     );
   }
 }
