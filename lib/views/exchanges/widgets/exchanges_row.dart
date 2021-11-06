@@ -1,9 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../models/core/exchanges.dart';
 
@@ -146,7 +145,17 @@ class _ExchangesRowState extends State<ExchangesRow> {
                           ),
                         ),
                       ),
-                      child: Html(data: exchanges.description ?? ""),
+                      child: Html(
+                        data: exchanges.description ?? "",
+                        onLinkTap: (url, _, __, ___) async {
+                          if (url != null && await canLaunch(url)) {
+                            await launch(
+                              url,
+                              enableJavaScript: true,
+                            );
+                          }
+                        },
+                      ),
                     )
                   : Container(),
             ),
