@@ -35,18 +35,18 @@ class _ExchangesRowState extends State<ExchangesRow> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _isClicked = !_isClicked;
-        });
-      },
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeIn,
-        child: Column(
-          children: [
-            Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeIn,
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _isClicked = !_isClicked;
+              });
+            },
+            child: Container(
               margin: const EdgeInsets.symmetric(
                 horizontal: 15,
               ),
@@ -123,44 +123,44 @@ class _ExchangesRowState extends State<ExchangesRow> {
                 ],
               ),
             ),
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeIn,
-              child: _isClicked
-                  ? Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 15,
-                      ),
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        border: Border.symmetric(
-                          vertical: BorderSide(
-                            color: Colors.grey,
-                            width: 0.4,
-                          ),
-                          horizontal: BorderSide(
-                            color: Colors.grey,
-                            width: 0.6,
-                          ),
+          ),
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeIn,
+            child: _isClicked
+                ? Container(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      border: Border.symmetric(
+                        vertical: BorderSide(
+                          color: Colors.grey,
+                          width: 0.4,
+                        ),
+                        horizontal: BorderSide(
+                          color: Colors.grey,
+                          width: 0.6,
                         ),
                       ),
-                      child: Html(
-                        data: exchanges.description ?? "",
-                        onLinkTap: (url, _, __, ___) async {
-                          if (url != null && await canLaunch(url)) {
-                            await launch(
-                              url,
-                              enableJavaScript: true,
-                            );
-                          }
-                        },
-                      ),
-                    )
-                  : Container(),
-            ),
-          ],
-        ),
+                    ),
+                    child: Html(
+                      data: exchanges.description ?? "",
+                      onLinkTap: (url, _, __, ___) async {
+                        if (url != null && await canLaunch(url)) {
+                          await launch(
+                            url,
+                            enableJavaScript: true,
+                          );
+                        }
+                      },
+                    ),
+                  )
+                : Container(),
+          ),
+        ],
       ),
     );
   }
