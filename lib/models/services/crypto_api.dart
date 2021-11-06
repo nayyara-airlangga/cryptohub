@@ -23,7 +23,7 @@ class CryptoApi {
   }
 
   Future<String> getCryptoDetails(int coinId) async {
-    final url = Uri.https(baseUrl, "/coins/$coinId");
+    final url = Uri.https(baseUrl, "/coin/$coinId");
     final res = await http.get(url, headers: apiHeaders);
 
     if (res.statusCode != 200) {

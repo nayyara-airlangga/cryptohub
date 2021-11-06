@@ -1,19 +1,21 @@
+import 'dart:collection';
+
 class CryptoInfo {
   String name;
   String description;
   String iconUrl;
-  List<CryptoLink> links;
+  List<dynamic> links;
   String slug;
   String price;
   int rank;
   int volume;
   int marketCap;
-  Map<dynamic, String> allTimeHigh;
+  LinkedHashMap<String, dynamic> allTimeHigh;
   int numberOfMarkets;
   int numberOfExchanges;
   bool approvedSupply;
-  int totalSupply;
-  int circulatingSupply;
+  double totalSupply;
+  double circulatingSupply;
 
   CryptoInfo({
     required this.name,
@@ -32,16 +34,26 @@ class CryptoInfo {
     required this.totalSupply,
     required this.circulatingSupply,
   });
-}
 
-class CryptoLink {
-  String name;
-  String type;
-  String url;
+  static CryptoInfo? fromMap(Map<String, dynamic>? map) {
+    if (map == null) return null;
 
-  CryptoLink({
-    required this.name,
-    required this.type,
-    required this.url,
-  });
+    return CryptoInfo(
+      name: map['name'],
+      description: map['description'],
+      iconUrl: map['iconUrl'],
+      links: map['links'],
+      slug: map['slug'],
+      price: map['price'],
+      rank: map['rank'],
+      volume: map['volume'],
+      marketCap: map['marketCap'],
+      allTimeHigh: map['allTimeHigh'],
+      numberOfMarkets: map['numberOfMarkets'],
+      numberOfExchanges: map['numberOfExchanges'],
+      approvedSupply: map['approvedSupply'],
+      totalSupply: double.parse(map['totalSupply'].toString()),
+      circulatingSupply: double.parse(map['circulatingSupply'].toString()),
+    );
+  }
 }

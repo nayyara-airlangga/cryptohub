@@ -49,8 +49,8 @@ class CryptosHelper {
       return null;
     }
 
-    final data = json.decode(res);
-    final CryptoInfo coin = data['data']['coin'];
+    final data = json.decode(res) as Map<String, dynamic>;
+    final CryptoInfo? coin = CryptoInfo.fromMap(data['data']['coin']);
 
     return coin;
   }
