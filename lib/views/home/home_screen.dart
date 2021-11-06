@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    _coinsFuture = _obtainFutures()[1];
+    _coinsFuture = _obtainFutures()[0];
 
     super.initState();
   }
