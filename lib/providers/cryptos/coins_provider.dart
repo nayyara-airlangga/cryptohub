@@ -1,8 +1,8 @@
-import 'package:cryptohub/models/core/crypto_stats.dart';
+import 'package:cryptohub/models/cryptos/crypto_stats.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../models/core/coin.dart';
-import '../../models/helpers/cryptos_helper.dart';
+import '../../models/cryptos/coin.dart';
+import '../../utils/helpers/cryptos_helper.dart';
 
 class CoinsProvider with ChangeNotifier {
   final helper = CryptosHelper();

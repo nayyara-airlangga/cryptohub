@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import '../services/crypto_news_api.dart';
-import '../core/crypto_news.dart';
+import '../../models/crypto_news/crypto_news.dart';
 
 class CryptoNewsHelper {
   final api = CryptoNewsApi();

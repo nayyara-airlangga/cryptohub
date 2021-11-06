@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../models/core/crypto_news.dart';
-import '../../models/helpers/crypto_news_helper.dart';
+import '../../models/crypto_news/crypto_news.dart';
+import '../../../utils/helpers/crypto_news_helper.dart';
 
 class CryptoNewsProvider with ChangeNotifier {
   final helper = CryptoNewsHelper();

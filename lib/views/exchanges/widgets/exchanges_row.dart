@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../models/core/exchanges.dart';
+import '../../../models/cryptos/exchanges.dart';
 
 class ExchangesRow extends StatefulWidget {
   const ExchangesRow({

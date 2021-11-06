@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../models/core/coin.dart';
+import '../../models/cryptos/coin.dart';
 import '../../views/crypto_details/crypto_details.dart';
 
 class CoinCard extends StatelessWidget {

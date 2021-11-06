@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../models/core/graph_data.dart';
-import '../../models/helpers/cryptos_helper.dart';
+import '../../models/cryptos/graph_data.dart';
+import '../../utils/helpers/cryptos_helper.dart';
 
 class CoinHistoryProvider with ChangeNotifier {
   final helper = CryptosHelper();

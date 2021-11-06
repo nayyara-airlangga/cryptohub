@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../models/core/crypto_news.dart';
+import '../../models/crypto_news/crypto_news.dart';
 
 const placeholderImageUrl =
     "https://cpng.pikpng.com/pngl/s/550-5506683_rethinking-icon-news-placeholder-clipart.png";

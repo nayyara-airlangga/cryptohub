@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import '../services/crypto_api.dart';
-import '../core/coin.dart';
-import '../core/graph_data.dart';
-import '../core/exchanges.dart';
-import '../core/crypto_info.dart';
-import '../core/crypto_stats.dart';
+import '../../models/cryptos/coin.dart';
+import '../../models/cryptos/graph_data.dart';
+import '../../models/cryptos/exchanges.dart';
+import '../../models/cryptos/crypto_info.dart';
+import '../../models/cryptos/crypto_stats.dart';
 
 class CryptosHelper {
   final api = CryptoApi();

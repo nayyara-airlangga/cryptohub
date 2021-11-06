@@ -16,6 +16,7 @@ class CryptoInfo {
   bool approvedSupply;
   double totalSupply;
   double circulatingSupply;
+  double change;
 
   CryptoInfo({
     required this.name,
@@ -33,6 +34,7 @@ class CryptoInfo {
     required this.approvedSupply,
     required this.totalSupply,
     required this.circulatingSupply,
+    required this.change,
   });
 
   static CryptoInfo? fromMap(Map<String, dynamic>? map) {
@@ -54,6 +56,7 @@ class CryptoInfo {
       approvedSupply: map['approvedSupply'],
       totalSupply: double.parse(map['totalSupply'].toString()),
       circulatingSupply: double.parse(map['circulatingSupply'].toString()),
+      change: double.parse(map['change'].toString()),
     );
   }
 }

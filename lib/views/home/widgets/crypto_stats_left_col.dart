@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../models/core/crypto_stats.dart';
+import '../../../models/cryptos/crypto_stats.dart';
 
 class CryptoStatsLeftCol extends StatelessWidget {
   final CryptoStats cryptoStats;

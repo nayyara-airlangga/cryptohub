@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../models/helpers/cryptos_helper.dart';
-import '../../models/core/crypto_info.dart';
+import '../../utils/helpers/cryptos_helper.dart';
+import '../../models/cryptos/crypto_info.dart';
 
 class CryptoDetailsProvider extends ChangeNotifier {
   final helper = CryptosHelper();
@@ -16,24 +16,12 @@ class CryptoDetailsProvider extends ChangeNotifier {
       _cryptoInfo = null;
       notifyListeners();
     } else {
-      _cryptoInfo = CryptoInfo(
-        name: cryptoInfo.name,
-        description: cryptoInfo.description,
-        iconUrl: cryptoInfo.iconUrl,
-        links: cryptoInfo.links,
-        slug: cryptoInfo.slug,
-        price: cryptoInfo.price,
-        rank: cryptoInfo.rank,
-        volume: cryptoInfo.volume,
-        marketCap: cryptoInfo.marketCap,
-        allTimeHigh: cryptoInfo.allTimeHigh,
-        numberOfMarkets: cryptoInfo.numberOfMarkets,
-        numberOfExchanges: cryptoInfo.numberOfExchanges,
-        approvedSupply: cryptoInfo.approvedSupply,
-        totalSupply: cryptoInfo.totalSupply,
-        circulatingSupply: cryptoInfo.circulatingSupply,
-      );
+      _cryptoInfo = cryptoInfo;
       notifyListeners();
     }
+  }
+
+  void disposeCryptoInfo() {
+    _cryptoInfo = null;
   }
 }

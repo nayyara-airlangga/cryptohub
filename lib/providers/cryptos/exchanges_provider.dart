@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../models/helpers/cryptos_helper.dart';
-import '../../models/core/exchanges.dart';
+import '../../utils/helpers/cryptos_helper.dart';
+import '../../models/cryptos/exchanges.dart';
 
 class ExchangesProvider with ChangeNotifier {
   final helper = CryptosHelper();
