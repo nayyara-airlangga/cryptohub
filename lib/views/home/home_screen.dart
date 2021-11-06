@@ -19,31 +19,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Future? _cryptoStatsFuture;
-
   Future? _coinsFuture;
 
-  Future? _cryptoNewsListFuture;
-
-  Future _setCryptoNewsListFuture() {
-    return Provider.of<CryptoNewsProvider>(context, listen: false)
-        .setCryptoNews("Cryptocurrency", 9);
-  }
-
-  Future _setCryptoStatsFuture() {
-    return Provider.of<CoinsProvider>(context, listen: false)
-        .setCryptoStats(10);
-  }
-
-  Future _setCoinsFuture() {
-    return Provider.of<CoinsProvider>(context, listen: false).setCoins(10);
+  List<Future> _obtainFutures() {
+    return [
+      Provider.of<CoinsProvider>(context, listen: false).setCryptoStats(10),
+      Provider.of<CoinsProvider>(context, listen: false).setCoins(10),
+      Provider.of<CryptoNewsProvider>(context, listen: false)
+          .setCryptoNews("Cryptocurrency", 9),
+    ];
   }
 
   @override
   void initState() {
-    _cryptoStatsFuture = _setCryptoStatsFuture();
-    _coinsFuture = _setCoinsFuture();
-    _cryptoNewsListFuture = _setCryptoNewsListFuture();
+    _coinsFuture = _obtainFutures()[1];
+
     super.initState();
   }
 
@@ -60,117 +50,86 @@ class _HomeScreenState extends State<HomeScreen> {
       index: 0,
       body: RefreshIndicator(
         onRefresh: () async {
-          _cryptoStatsFuture = null;
           _coinsFuture = null;
-          _cryptoNewsListFuture = null;
-          _cryptoStatsFuture = _setCryptoStatsFuture();
-          _coinsFuture = _setCoinsFuture();
-          _cryptoNewsListFuture = _setCryptoNewsListFuture();
+          _coinsFuture = _obtainFutures()[1];
           return _coinsFuture as Future;
         },
-        child: SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Global Crypto Stats",
-                  style:
-                      theme.textTheme.headline4?.copyWith(color: Colors.black),
+        child: FutureBuilder(
+          future: _coinsFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: Colors.blue,
                 ),
-                const SizedBox(height: 40),
-                FutureBuilder(
-                  future: _cryptoStatsFuture,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.blue,
-                        ),
-                      );
-                    } else {
-                      return Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+              );
+            }
+            return SingleChildScrollView(
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Global Crypto Stats",
+                      style: theme.textTheme.headline4
+                          ?.copyWith(color: Colors.black),
+                    ),
+                    const SizedBox(height: 40),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CryptoStatsLeftCol(cryptoStats: cryptoStats!),
+                        CryptoStatsRightCol(cryptoStats: cryptoStats),
+                      ],
+                    ),
+                    const SizedBox(height: 40),
+                    Text(
+                      "The World's Top 10 Cryptocurrencies",
+                      style: theme.textTheme.headline4
+                          ?.copyWith(color: Colors.black),
+                    ),
+                    const SizedBox(height: 30),
+                    SizedBox(
+                      child: Column(
                         children: [
-                          CryptoStatsLeftCol(cryptoStats: cryptoStats!),
-                          CryptoStatsRightCol(cryptoStats: cryptoStats),
+                          for (int index = 0; index < coins.length; index++)
+                            CoinCard(
+                              key: ValueKey(
+                                  double.parse(coins[index]!.rank.toString())),
+                              coin: coins[index],
+                              theme: theme,
+                            ),
                         ],
-                      );
-                    }
-                  },
+                      ),
+                    ),
+                    const SizedBox(height: 25),
+                    Text(
+                      "Latest Crypto News",
+                      style: theme.textTheme.headline4
+                          ?.copyWith(color: Colors.black),
+                    ),
+                    const SizedBox(height: 25),
+                    SizedBox(
+                      child: Column(
+                        children: [
+                          for (int index = 0;
+                              index < cryptoNewsList.length;
+                              index++)
+                            NewsCard(
+                              key: ValueKey(cryptoNewsList[index]!.name),
+                              cryptoNews: cryptoNewsList[index]!,
+                              theme: theme,
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 40),
-                Text(
-                  "The World's Top 10 Cryptocurrencies",
-                  style:
-                      theme.textTheme.headline4?.copyWith(color: Colors.black),
-                ),
-                const SizedBox(height: 30),
-                FutureBuilder(
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.blue,
-                        ),
-                      );
-                    } else {
-                      return SizedBox(
-                        child: Column(
-                          children: [
-                            for (int index = 0; index < coins.length; index++)
-                              CoinCard(
-                                key: ValueKey(double.parse(
-                                    coins[index]!.rank.toString())),
-                                coin: coins[index],
-                                theme: theme,
-                              ),
-                          ],
-                        ),
-                      );
-                    }
-                  },
-                  future: _coinsFuture,
-                ),
-                const SizedBox(height: 25),
-                Text(
-                  "Latest Crypto News",
-                  style:
-                      theme.textTheme.headline4?.copyWith(color: Colors.black),
-                ),
-                const SizedBox(height: 25),
-                FutureBuilder(
-                  future: _cryptoNewsListFuture,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.blue,
-                        ),
-                      );
-                    } else {
-                      return SizedBox(
-                        child: Column(
-                          children: [
-                            for (int index = 0;
-                                index < cryptoNewsList.length;
-                                index++)
-                              NewsCard(
-                                key: ValueKey(cryptoNewsList[index]!.name),
-                                cryptoNews: cryptoNewsList[index]!,
-                                theme: theme,
-                              ),
-                          ],
-                        ),
-                      );
-                    }
-                  },
-                ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
