@@ -8,6 +8,7 @@ import '../shared/coin_card.dart';
 import '../shared/news_card.dart';
 import '../../providers/cryptos/coins_provider.dart';
 import '../../providers/crypto_news/crypto_news_provider.dart';
+import '../crypto_details/crypto_details.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = "/";
@@ -96,6 +97,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           for (int index = 0; index < coins.length; index++)
                             CoinCard(
+                              onTap: () async {
+                                await Navigator.pushNamed(
+                                  context,
+                                  CryptoDetailsScreen.routeName,
+                                  arguments: coins[index]!.id,
+                                );
+                                _coinsFuture = null;
+                                _coinsFuture = _obtainFutures()[0];
+                              },
                               key: ValueKey(
                                   double.parse(coins[index]!.rank.toString())),
                               coin: coins[index],

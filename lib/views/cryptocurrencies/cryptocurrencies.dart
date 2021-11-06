@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../views/shared/custom_scaffold.dart';
 import '../../providers/cryptos/coins_provider.dart';
 import '../shared/coin_card.dart';
+import '../crypto_details/crypto_details.dart';
 
 class CryptocurrenciesScreen extends StatefulWidget {
   static const routeName = "/cryptocurrencies";
@@ -71,6 +72,15 @@ class _CryptocurrenciesScreenState extends State<CryptocurrenciesScreen> {
                   return Container(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: CoinCard(
+                      onTap: () async {
+                        await Navigator.pushNamed(
+                          context,
+                          CryptoDetailsScreen.routeName,
+                          arguments: coins[index - 1]!.id,
+                        );
+                        _cryptosFuture = null;
+                        _cryptosFuture = _obtainCryptosFuture();
+                      },
                       key: ValueKey(
                         double.parse(
                           filteredCoins[index - 1]!.rank.toString(),

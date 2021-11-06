@@ -3,28 +3,23 @@ import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../models/cryptos/coin.dart';
-import '../../views/crypto_details/crypto_details.dart';
 
 class CoinCard extends StatelessWidget {
   const CoinCard({
     Key? key,
     required this.coin,
     required this.theme,
+    required this.onTap,
   }) : super(key: key);
 
   final Coin? coin;
   final ThemeData theme;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          CryptoDetailsScreen.routeName,
-          arguments: coin!.id,
-        );
-      },
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 20),
         decoration: BoxDecoration(
