@@ -54,6 +54,46 @@ class CoinDescription extends StatelessWidget {
                 vertical: 10,
               ),
             ),
+            "h2": Style(
+              fontSize: const FontSize(
+                26,
+                units: "px",
+              ),
+              color: Colors.blue,
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
+              ),
+            ),
+            "h1": Style(
+              fontSize: const FontSize(
+                26,
+                units: "px",
+              ),
+              color: Colors.blue,
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
+              ),
+            ),
+            "h4": Style(
+              fontSize: const FontSize(
+                26,
+                units: "px",
+              ),
+              color: Colors.blue,
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
+              ),
+            ),
+            "strong": Style(
+              fontSize: const FontSize(
+                26,
+                units: "px",
+              ),
+              color: Colors.blue,
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
+              ),
+            ),
             "p": Style(
               fontSize: const FontSize(
                 18,
