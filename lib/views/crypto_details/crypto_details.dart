@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../providers/cryptos/crypto_details_provider.dart';
 import 'widgets/detail_headers.dart';
 import 'widgets/price_data.dart';
+import 'widgets/statistics/statistics.dart';
 
 class CryptoDetailsScreen extends StatefulWidget {
   static const routeName = "/crypto-details";
@@ -102,6 +103,8 @@ class _CryptoDetailsScreenState extends State<CryptoDetailsScreen> {
                           ),
                           const SizedBox(height: 20),
                           PriceData(coin: coin),
+                          const SizedBox(height: 60),
+                          Statistics(coin: coin),
                         ],
                       ),
                     ),
