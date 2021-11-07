@@ -2,7 +2,7 @@ import 'dart:collection';
 
 class CryptoInfo {
   String name;
-  String description;
+  String? description;
   String iconUrl;
   List<dynamic> links;
   String slug;
