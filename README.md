@@ -1,4 +1,7 @@
 # CryptoHub
+
+[![Watch the video](https://img.youtube.com/vi/WmUR1xFCKrc/maxresdefault.jpg)](https://youtu.be/WmUR1xFCKrc)
+
 ## Overview
 
 CryptoHub is a cryptocurrency app which shows the stats, exchanges, news, and details of cryptocurrencies around the world. This was actually a website I made before and I decided to create the mobile app for this using Flutter and here it is. The APIs used to fetch the data are Coinranking and Bing News Search.
