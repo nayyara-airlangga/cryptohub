@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class StatisticsRow extends StatelessWidget {
-  const StatisticsRow({
+class DetailsRow extends StatelessWidget {
+  const DetailsRow({
     Key? key,
-    required this.icon,
+    this.icon,
     required this.statsName,
     required this.child,
   }) : super(key: key);
 
-  final Widget icon;
+  final Widget? icon;
   final String statsName;
   final Widget child;
 
@@ -18,7 +18,7 @@ class StatisticsRow extends StatelessWidget {
 
     return Row(
       children: [
-        icon,
+        icon ?? Container(),
         const SizedBox(width: 10),
         Text(
           statsName,

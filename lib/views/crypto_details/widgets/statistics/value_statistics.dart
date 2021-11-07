@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../models/cryptos/crypto_info.dart';
-import 'shared/statistics_divider.dart';
-import 'shared/statistics_row.dart';
+import '../shared/details_divider.dart';
+import '../shared/details_row.dart';
 
 class ValueStatistics extends StatelessWidget {
   const ValueStatistics({
@@ -35,7 +35,7 @@ class ValueStatistics extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 30),
-          StatisticsRow(
+          DetailsRow(
             icon: const Icon(
               Icons.monetization_on_outlined,
             ),
@@ -51,8 +51,8 @@ class ValueStatistics extends StatelessWidget {
               ),
             ),
           ),
-          const StatisticsDivider(),
-          StatisticsRow(
+          const DetailsDivider(),
+          DetailsRow(
             icon: const Icon(Icons.tag),
             statsName: "Rank",
             child: Text(
@@ -62,8 +62,8 @@ class ValueStatistics extends StatelessWidget {
               ),
             ),
           ),
-          const StatisticsDivider(),
-          StatisticsRow(
+          const DetailsDivider(),
+          DetailsRow(
             icon: const Icon(
               Icons.watch_later_outlined,
             ),
@@ -79,8 +79,8 @@ class ValueStatistics extends StatelessWidget {
               ),
             ),
           ),
-          const StatisticsDivider(),
-          StatisticsRow(
+          const DetailsDivider(),
+          DetailsRow(
             icon: const Icon(
               Icons.monetization_on_outlined,
             ),
@@ -96,8 +96,8 @@ class ValueStatistics extends StatelessWidget {
               ),
             ),
           ),
-          const StatisticsDivider(),
-          StatisticsRow(
+          const DetailsDivider(),
+          DetailsRow(
             icon: const Icon(
               Icons.trending_up_outlined,
             ),

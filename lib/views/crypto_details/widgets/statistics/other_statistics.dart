@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../models/cryptos/crypto_info.dart';
-import 'shared/statistics_row.dart';
-import 'shared/statistics_divider.dart';
+import '../shared/details_row.dart';
+import '../shared/details_divider.dart';
 
 class OtherStatistics extends StatelessWidget {
   const OtherStatistics({
@@ -35,7 +35,7 @@ class OtherStatistics extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 30),
-          StatisticsRow(
+          DetailsRow(
             icon: const Icon(Icons.trending_up),
             statsName: "Number of Markets",
             child: Text(
@@ -45,8 +45,8 @@ class OtherStatistics extends StatelessWidget {
               ),
             ),
           ),
-          const StatisticsDivider(),
-          StatisticsRow(
+          const DetailsDivider(),
+          DetailsRow(
             icon: const Icon(Icons.work_outline),
             statsName: "Number Of Exchanges",
             child: Text(
@@ -56,8 +56,8 @@ class OtherStatistics extends StatelessWidget {
               ),
             ),
           ),
-          const StatisticsDivider(),
-          StatisticsRow(
+          const DetailsDivider(),
+          DetailsRow(
             icon: const RotatedBox(
               quarterTurns: 2,
               child: Icon(Icons.info_outline),
@@ -67,8 +67,8 @@ class OtherStatistics extends StatelessWidget {
                 ? const Icon(Icons.check)
                 : const Icon(Icons.close),
           ),
-          const StatisticsDivider(),
-          StatisticsRow(
+          const DetailsDivider(),
+          DetailsRow(
             icon: const RotatedBox(
               quarterTurns: 2,
               child: Icon(Icons.info_outline),
@@ -85,8 +85,8 @@ class OtherStatistics extends StatelessWidget {
               ),
             ),
           ),
-          const StatisticsDivider(),
-          StatisticsRow(
+          const DetailsDivider(),
+          DetailsRow(
             icon: const RotatedBox(
               quarterTurns: 2,
               child: Icon(Icons.info_outline),
