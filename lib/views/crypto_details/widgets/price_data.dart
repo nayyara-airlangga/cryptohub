@@ -7,9 +7,11 @@ class PriceData extends StatelessWidget {
   const PriceData({
     Key? key,
     required this.coin,
+    required this.change,
   }) : super(key: key);
 
   final CryptoInfo coin;
+  final double change;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class PriceData extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  "Change in Price: ${coin.change}%",
+                  "Change in Price: $change%",
                   style: theme.textTheme.headline5?.copyWith(
                     fontSize: 20,
                   ),
@@ -55,7 +57,7 @@ class PriceData extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              "Change in Price: ${coin.change}%",
+              "Change in Price: $change%",
               style: theme.textTheme.headline5?.copyWith(
                 fontSize: 20,
               ),
