@@ -19,4 +19,8 @@ class CoinHistoryProvider with ChangeNotifier {
       _coinHistory = coinHistory;
     }
   }
+
+  void disposeCoinHistory() {
+    _coinHistory = null;
+  }
 }
