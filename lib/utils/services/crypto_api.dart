@@ -34,7 +34,7 @@ class CryptoApi {
   }
 
   Future<String> getCryptoHistory(int coinId, String timePeriod) async {
-    final url = Uri.https(baseUrl, "/coins/$coinId/history/$timePeriod");
+    final url = Uri.https(baseUrl, "/coin/$coinId/history/$timePeriod");
     final res = await http.get(url, headers: apiHeaders);
 
     if (res.statusCode != 200) {

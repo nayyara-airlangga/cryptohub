@@ -12,6 +12,7 @@ import 'providers/crypto_news/crypto_news_provider.dart';
 import 'providers/cryptos/coins_provider.dart';
 import 'providers/cryptos/exchanges_provider.dart';
 import 'providers/cryptos/crypto_details_provider.dart';
+import 'providers/cryptos/coin_history_provider.dart';
 
 Future<void> main() async {
   await dotenv.load();
@@ -36,6 +37,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => CryptoDetailsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CoinHistoryProvider(),
         ),
       ],
       child: MaterialApp(

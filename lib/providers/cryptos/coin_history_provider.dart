@@ -16,10 +16,7 @@ class CoinHistoryProvider with ChangeNotifier {
       _coinHistory = null;
       notifyListeners();
     } else {
-      _coinHistory = CoinHistory(
-        change: coinHistory.change,
-        history: coinHistory.history,
-      );
+      _coinHistory = coinHistory;
     }
   }
 }

@@ -64,8 +64,8 @@ class CryptosHelper {
       return null;
     }
 
-    final data = json.decode(res);
-    final CoinHistory coinHistory = data['data'];
+    final data = json.decode(res) as Map<String, dynamic>;
+    final CoinHistory? coinHistory = CoinHistory.fromMap(data['data']);
 
     return coinHistory;
   }
